@@ -1,6 +1,6 @@
-//import 'package:ecommerce/screens/home_page.dart';
+// ignore_for_file: valid_regexps
 
-import 'package:facebookclone/Screens/home_page.dart';
+import 'package:facebookclone/View/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   //       password!.length < 6 ? "password " : null,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               Padding(
@@ -168,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'Create New Account',
                     style: TextStyle(fontSize: 18),
                   ),
@@ -179,28 +179,28 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text('About'),
+                    child: const Text('About'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 50,
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text('Help'),
+                    child: const Text('Help'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 50,
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text('More'),
+                    child: const Text('More'),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Column(
+              const Column(
                 children: [
                   Text(
                     'Meta 2024',

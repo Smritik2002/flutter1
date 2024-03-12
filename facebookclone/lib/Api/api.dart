@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:facebookclone/Models/newsmodel.dart';
+import 'package:facebookclone/Models/news/news_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
