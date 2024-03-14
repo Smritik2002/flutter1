@@ -1,7 +1,11 @@
 // ignore_for_file: valid_regexps
 
+import 'dart:developer';
+
 import 'package:facebookclone/View/home/home_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/utlis/push_notification.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -24,6 +28,8 @@ class _LoginPageState extends State<LoginPage> {
     }
     return null;
   }
+
+  final PushNotificationService _notification = PushNotificationService();
 
   bool isloading = false;
   @override
@@ -50,17 +56,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  controller: _usernameController,
-                  decoration: const InputDecoration(
-                    labelText: 'Mobile number or email address',
-                  ),
-                  validator: (name) =>
-                      name!.length < 8 ? "name is too short" : null,
-                ),
-              ),
+              NewWidget(usernameController: _usernameController),
               const SizedBox(height: 8.0),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -105,6 +101,9 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {
                         isloading = true;
                       });
+                      final token = await _notification.getToken();
+                      log("----- TOKEN ------ $token");
+
                       await Future.delayed(const Duration(seconds: 2));
                       // ignore: use_build_context_synchronously
                       Navigator.push(
@@ -211,6 +210,29 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    super.key,
+    required TextEditingController usernameController,
+  }) : _usernameController = usernameController;
+
+  final TextEditingController _usernameController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextFormField(
+        controller: _usernameController,
+        decoration: const InputDecoration(
+          labelText: 'Mobile number or email address',
+        ),
+        validator: (name) => name!.length < 8 ? "name is too short" : null,
       ),
     );
   }

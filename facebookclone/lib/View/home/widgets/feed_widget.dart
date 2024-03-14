@@ -12,7 +12,7 @@ class HomePostWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Provider.of<HomePageNotifier>(context, listen: false).getData();
 
-    return Consumer<HomePageNotifier>(builder: (context, homeNotifier, child) {
+    return Consumer<HomePageNotifier>(builder: (context, homeNotifier, _) {
       return homeNotifier.isApiLoading
           ? const CircularProgressIndicator()
           : ListView.separated(
